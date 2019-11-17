@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "chapter.h"
 
@@ -36,7 +37,6 @@ char *GetData(FILE *f)
     return data;
 }
 
-
 action GetAction(FILE *f)
 {
     char *raw = GetData(f);
@@ -47,72 +47,57 @@ action GetAction(FILE *f)
     rtn.type = NULL;
     do
     {
-        char *tmp = (char*) malloc(sizeof(char) * (ii+1));
-        for (int jj = 0; jj < ii; jj++)
-        {
-            tmp[jj] = rtn.type[jj];
-        }
-        free(rtn.type);
-        rtn.type = tmp;
-        rtn.type[++ii] = *raw;
+        ii++;
     } while (*raw++ != '[');
+    *--raw = '\0';
+    rtn.type = (char*) malloc(sizeof(char) * (ii+1));
+    raw = raw - ii + 1;
 
-    char *tmp = (char*) malloc(sizeof(char) * (ii+1));
-    for (int jj = 0; jj < ii; jj++)
-    {
-        tmp[jj] = rtn.type[jj];
-    }
-    free(rtn.type);
-    rtn.type = tmp;
-    rtn.type[++ii] = '\0';
+    strcpy(rtn.type,raw);
 
-    raw++;
+    raw = raw + ii;
 
     //---------------------------------DIFF-------------------------------
     ii = 0;
-    char *diffTxt = NULL;
     do
     {
-        char *tmp = (char*) malloc(sizeof(char) * (ii+1));
-        for (int jj = 0; jj < ii; ++jj) {
-            tmp[jj] = diffTxt[jj];
-        }
-        free(diffTxt);
+        ii++;
+    } while (*raw++ != ']');
+    *--raw = '\0';
 
-        tmp[++ii] = *raw;
-        diffTxt = tmp;
+    raw -= ii - 1;
 
-    } while (*raw++ != ',');
+    sscanf(raw,"%d",&rtn.diff);
 
-    tmp = (char*) malloc(sizeof(char) * (ii+1));
-    for (int jj = 0; jj < ii; ++jj) {
-        tmp[jj] = diffTxt[jj];
-    }
-
-    free(diffTxt);
-    tmp[++ii] = '\0';
-    diffTxt = tmp;
-
-    sscanf(diffTxt, "%d " ,rtn.diff);
-    
-    raw++;
+    raw += ii ;
 
     //-------------------------DIRECTION------------------------------
+
+    rtn.blocking = *raw;
+
     free(eleje);
     return rtn;
 }
 
-chapter ReadChapt(FILE *f)
+chapter ReadChapt(const char *room)
 {
+    FILE *f = fopen(room,"r");
     chapter c;
 
     c.story = GetData(f);
+    c.action = GetAction(f);
     GetData(f);
-    GetData(f);
-
+    fclose(f);
     return c;
+
 }
 
 void FreeChap(chapter c) {
     free(c.story);
+}
+
+
+
+void DrawChapter(const chapter chp) {
+    printf("%s\n", chp.story);
 }

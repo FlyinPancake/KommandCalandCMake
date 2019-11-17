@@ -2,8 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 #include "chapter.h"
 #include "movement.h"
+#include "debug.h"
 
 #define RED  "\x1B[31m"
 #define GRN   "\x1B[32m"
@@ -14,9 +16,6 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-void WrChap(chapter c) {
-    printf("Story: %s\n", c.story);
-}
 
 int main(void)
 {
@@ -36,7 +35,17 @@ int main(void)
     int **roomLayout= getMovementTable();
     if (roomLayout != NULL)
         printf("Table imported\n");
-    ChooseNext(findPD(roomLayout,2,3));
+    chapter current = ReadChapt("rooms/1.txt");
+    while (true) {
+        char command[10];
+        char arg[10];
+
+        DrawChapter(current);
+        scanf("%s %s");
+
+        
+
+    }
 
 
     return 0;

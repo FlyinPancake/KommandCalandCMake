@@ -4,6 +4,9 @@
 
 #ifndef KOMMANDCALAND_CHAPTER_H
 #define KOMMANDCALAND_CHAPTER_H
+
+#include <stdio.h>
+
 typedef struct action
 {
     int diff;
@@ -24,7 +27,7 @@ typedef struct chapter
     item item;
 } chapter ;
 
-char *GetData(FILE *f);
-chapter ReadChapt(FILE *f);
+void DrawChapter(const chapter chp);
+chapter ReadChapt(const char *room );
 void FreeChap(chapter c);
 #endif //KOMMANDCALAND_CHAPTER_H
