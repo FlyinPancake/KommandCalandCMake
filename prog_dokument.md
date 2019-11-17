@@ -5,12 +5,12 @@ A program jelenleg termek között tudja mozgatni a játékost. A játékos a `m
 ## Adatszerkezet
 A termek a `rooms` mappában találhatóak, és elrendezésüket a `layout.txt` tartalmazza.
 A `layout.txt` tetszőleges szélességű és magasságú, és szobák indexeit tárolja a következő módon: 
-|0|0 |0 |0 |0 |0 |0|
-|--|--|--|--|--|--|--| 
-|0 |0 |0 |1 |0 |0 |0|
-|0 |0 |0 |2 |0 |0|0
-|0 |0 |3 |4 |5 |0 |0| 
-|0 |0 |6 |0 |12 |0 |0| 
-|0|0 |0 |0 |0 |0 |0|
+| 0   | 0   | 0   | 0   | 0   | 0   | 0   |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   | 0   | 0   | 1   | 0   | 0   | 0   |
+| 0   | 0   | 0   | 2   | 0   | 0   | 0   |
+| 0   | 0   | 3   | 4   | 5   | 0   | 0   |
+| 0   | 0   | 6   | 0   | 12  | 0   | 0   |
+| 0   | 0   | 0   | 0   | 0   | 0   | 0   |
 A "térképet" körülveszi egy 0-ból álló "kerítés". A program csak oda engedi mozogni a játékost, ahol nem 0 mező van, és ott betölti ahoz a mezőhöz tartozó `rooms/SZÁM.txt` filet
 
