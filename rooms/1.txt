@@ -1,0 +1,5 @@
+1es szoba/
+Welcome to the Dungeon.
+Use your hands to open the gates /
+/hand[1]s/
+//

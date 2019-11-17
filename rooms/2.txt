@@ -1,0 +1,5 @@
+2es szoba/
+Good... keep going south, so the program doesn't crash
+And... gates are'nt implemented at this stage anyways.../
+/hand[1]s/
+//
