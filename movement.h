@@ -13,7 +13,7 @@ int getWidth();
 int **getMovementTable();
 void printLayout();
 int **addNewLine(int **o,int newLines);
-PossibleDirection findPD(int **eleje, int x, int y);
+PossibleDirection findPD(int **eleje, int y, int x);
 void ChooseNext(PossibleDirection p);
 
 #endif //KOMMANDCALAND_MOVEMENT_H

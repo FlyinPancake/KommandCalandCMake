@@ -15,7 +15,9 @@
 #define CYN   "\x1B[36m"
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
-
+void nl() {
+    printf("\n");
+}
 
 int main(void)
 {
@@ -35,16 +37,72 @@ int main(void)
     int **roomLayout= getMovementTable();
     if (roomLayout != NULL)
         printf("Table imported\n");
+
+
     chapter current = ReadChapt("rooms/1.txt");
+    int x = 3,y = 1;
+
+
     while (true) {
         char command[10];
         char arg[10];
 
         DrawChapter(current);
-        scanf("%s %s");
+        nl();
+        ChooseNext(findPD(roomLayout,y,x));
+        nl();
+        scanf("%s %s",command,arg);
 
-        
+        if (strcmp(command, "move") == 0) {
+            PossibleDirection pd = findPD(roomLayout, y, x);
+            int nextroom;
+            int x_p = x, y_p = y;
+            switch (arg[0]) {
+                case 'n':
+                    nextroom = pd.n;
+                    y--;
+                    break;
+                case 'e':
+                    nextroom = pd.e;
+                    x++;
+                    break;
+                case 'w':
+                    nextroom = pd.w;
+                    x--;
+                    break;
+                case 's':
+                    nextroom = pd.s;
+                    y++;
+                    break;
+                default:
+                    nextroom = 0;
+                    break;
+            }
 
+            if (nextroom == 0)  {
+                printf("You can't go there!\n");
+                x = x_p;
+                y = y_p;
+                goto reDraw;
+            }
+            char path[50] = "rooms/";
+            char num[3];
+            sprintf(num, "%d.txt", nextroom);
+            strcat(path, num);
+            current = ReadChapt(path);
+            goto reDraw;
+        }
+
+        else if (strcmp(command,"exit") == 0)
+            break;
+
+        else {
+            printf("Come again pls...");
+            nl();
+        }
+
+        reDraw:
+        nl();
     }
 
 

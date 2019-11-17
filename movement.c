@@ -71,11 +71,11 @@ int **addNewLine(int **o,int rownum) {
     return ret;
 }
 
-PossibleDirection findPD(int **eleje, int x, int y) {
-    PossibleDirection rtn = { .n = eleje[x - 1][y],
-                              .e = eleje[x][y + 1],
-                              .s = eleje[x + 1][y],
-                              .w = eleje[x][y + 1]};
+PossibleDirection findPD(int **eleje, int y, int x) {
+    PossibleDirection rtn = { .n = eleje[y - 1][x],
+                              .e = eleje[y][x + 1],
+                              .s = eleje[y + 1][x],
+                              .w = eleje[y][x + 1]};
     return rtn;
 }
 

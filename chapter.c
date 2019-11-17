@@ -101,3 +101,4 @@ void FreeChap(chapter c) {
 void DrawChapter(const chapter chp) {
     printf("%s\n", chp.story);
 }
+
