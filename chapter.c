@@ -93,8 +93,8 @@ action GetAction(FILE *f)
     tmp[++ii] = '\0';
     diffTxt = tmp;
 
-    sscanf(diffTxt, "%d" ,rtn.diff);
-
+    sscanf(diffTxt, "%d " ,rtn.diff);
+    
     raw++;
 
     //-------------------------DIRECTION------------------------------
