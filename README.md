@@ -4,6 +4,8 @@ This is a university homework project.
 
 ## Usage
 
-todo
+## Links
+[github](https://github.com/FlyinPancake/KommandCalandCMake)
+
 
 
