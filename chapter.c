@@ -79,6 +79,36 @@ action GetAction(FILE *f)
     return rtn;
 }
 
+item GetItem(FILE *f)
+{
+    item rtn = {.type ="NaI"};
+
+    char *start = GetData(f);
+    char *raw = start;
+    if (strlen(raw) == 0)
+        return  rtn;
+
+    char *type = raw;
+    while (*++raw != '[');
+    *raw = '\0';
+    strcpy(rtn.type, type);
+
+    char *qual = raw + 1;
+    while (*++raw != ',');
+    *raw = '\0';
+    sscanf(qual, "%d", &rtn.qual);
+
+    char *name = raw + 1;
+    while (*++raw != ']');
+    *raw = '\0';
+    strcpy(rtn.name, name);
+
+    rtn.next = NULL;
+
+    free(start);
+
+    return rtn;
+}
 chapter ReadChapt(const char *room)
 {
     FILE *f = fopen(room,"r");
@@ -86,7 +116,7 @@ chapter ReadChapt(const char *room)
 
     c.story = GetData(f);
     c.action = GetAction(f);
-    GetData(f);
+    c.item = GetItem(f);
     fclose(f);
     return c;
 
@@ -94,9 +124,9 @@ chapter ReadChapt(const char *room)
 
 void FreeChap(chapter c) {
     free(c.story);
+    free(c.action.type);
+
 }
-
-
 
 void DrawChapter(const chapter chp) {
     printf("%s\n", chp.story);

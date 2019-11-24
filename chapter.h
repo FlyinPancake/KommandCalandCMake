@@ -16,8 +16,9 @@ typedef struct action
 
 typedef struct item
 {
-    char *name, *type;
+    char name[30], type[10];
     int qual;
+    struct item *next;
 } item;
 
 typedef struct chapter

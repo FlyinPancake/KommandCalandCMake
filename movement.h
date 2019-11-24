@@ -10,10 +10,15 @@ typedef struct PossibleDirection {
 } PossibleDirection;
 
 int getWidth();
-int **getMovementTable();
+int **getMovementTable(int *rows);
 void printLayout();
 int **addNewLine(int **o,int newLines);
 PossibleDirection findPD(int **eleje, int y, int x);
 void ChooseNext(PossibleDirection p);
+int moveTo(PossibleDirection pd , int *y , int *x, char dir);
+PossibleDirection blockingDirection(PossibleDirection nonB, char type);
+void freeTable(int **table, int rows);
+
+
 
 #endif //KOMMANDCALAND_MOVEMENT_H

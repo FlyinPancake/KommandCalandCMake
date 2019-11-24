@@ -8,7 +8,7 @@
 
 #define LAYOUT_PATH "rooms/layout.txt"
 
-int **getMovementTable() {
+int **getMovementTable(int *rows) {
 
     int **eleje = (int**) malloc(sizeof(int*));
     int width = getWidth();
@@ -17,7 +17,8 @@ int **getMovementTable() {
     FILE *fp = fopen(LAYOUT_PATH, "r");
     if (fp == NULL)
         return NULL;
-    char *line = malloc((width*3+1) * sizeof(char));
+    char *lineS = malloc((width*3+1) * sizeof(char));
+    char *line = lineS;
     int rownum = 0;
     while (fgets(line, width * 3 - 1, fp) != NULL) {
         eleje = addNewLine(eleje,rownum);
@@ -33,6 +34,9 @@ int **getMovementTable() {
         }
         rownum++;
     }
+    free(lineS);
+
+    *rows = rownum;
     return eleje;
 }
 
@@ -71,6 +75,13 @@ int **addNewLine(int **o,int rownum) {
     return ret;
 }
 
+void freeTable(int **table, int rows) {
+    for (int ii = 0; ii < rows; ++ii) {
+        free(table[ii]);
+    }
+    free(table);
+}
+
 PossibleDirection findPD(int **eleje, int y, int x) {
     PossibleDirection rtn = { .n = eleje[y - 1][x],
                               .e = eleje[y][x + 1],
@@ -95,3 +106,56 @@ void ChooseNext(PossibleDirection p) {
     }
     printf("\n");
 }
+
+
+int moveTo(PossibleDirection pd, int *y, int *x, char dir) {
+    int nextroom = 0;
+    int x_p = *x, y_p = *y;
+    switch (dir) {
+        case 'n':
+            nextroom = pd.n;
+            *y -= 1;
+            break;
+        case 'e':
+            nextroom = pd.e;
+            *x += 1;
+            break;
+        case 'w':
+            nextroom = pd.w;
+            *x -= 1;
+            break;
+        case 's':
+            nextroom = pd.s;
+            *y += 1;
+            break;
+    }
+
+    if (nextroom == 0) {
+        printf("You can't go there!\n");
+        *x = x_p;
+        *y = y_p;
+    }
+    return nextroom;
+}
+
+
+PossibleDirection blockingDirection(PossibleDirection nonB, char type) {
+    switch (type) {
+        case 'n':
+            nonB.n = 0;
+            break;
+        case 'e':
+            nonB.e = 0;
+            break;
+        case 's':
+            nonB.s = 0;
+            break;
+        case 'w':
+            nonB.w = 0;
+            break;
+
+    }
+}
+
+
+
