@@ -54,3 +54,20 @@ void freeItemsList(item *clist) {
         clist = prev.next;
     }
 }
+
+void reverseInv(item **clist)
+{
+    item *mozg = *clist;
+    if (mozg == NULL)
+        return;
+    item *elozo = NULL;
+    while (mozg != NULL)
+    {
+        item *kov = mozg -> next;
+        mozg -> next = elozo;
+        elozo = mozg;
+        mozg = kov;
+
+    }
+    *clist = elozo;
+}

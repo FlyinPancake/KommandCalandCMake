@@ -12,6 +12,7 @@ bool actionSuccess(item it, int diff);
 void addItem(item **clist, item toAdd);
 void freeItemsList(item *clist);
 void listItems (item *listOi);
+void reverseInv(item **clist);
 
 
 

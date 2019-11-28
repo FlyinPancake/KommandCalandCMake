@@ -17,10 +17,10 @@ int **getMovementTable(int *rows) {
     FILE *fp = fopen(LAYOUT_PATH, "r");
     if (fp == NULL)
         return NULL;
-    char *lineS = malloc((width*3+1) * sizeof(char));
+    char *lineS = malloc(((width*3)+1) * sizeof(char));
     char *line = lineS;
     int rownum = 0;
-    while (fgets(line, width * 3 - 1, fp) != NULL) {
+    while (fgets(line, width * 3 - 2, fp) != NULL) {
         eleje = addNewLine(eleje,rownum);
         eleje[rownum] = (int*) malloc(sizeof(int)*width);
 
@@ -35,7 +35,7 @@ int **getMovementTable(int *rows) {
         rownum++;
     }
     free(lineS);
-
+    
     *rows = rownum;
     return eleje;
 }
