@@ -8,11 +8,14 @@
 #include <stdbool.h>
 #include "chapter.h"
 
-bool actionSuccess(item it, int diff);
+
+item *findbyType(item *invenory, char type[]);
 void addItem(item **clist, item toAdd);
 void freeItemsList(item *clist);
 void listItems (item *listOi);
 void reverseInv(item **clist);
+bool useItem(action act, item *itm);
+
 
 
 

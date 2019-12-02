@@ -1,0 +1,17 @@
+filename, language, C++, C, Markdown, XML, comment, blank, total
+/home/flyinpancake/CLionProjects/KommandCaland/.idea/KommandCaland.iml, XML, 0, 0, 0, 2, 0, 0, 2
+/home/flyinpancake/CLionProjects/KommandCaland/.idea/misc.xml, XML, 0, 0, 0, 7, 0, 0, 7
+/home/flyinpancake/CLionProjects/KommandCaland/.idea/modules.xml, XML, 0, 0, 0, 8, 0, 0, 8
+/home/flyinpancake/CLionProjects/KommandCaland/.idea/vcs.xml, XML, 0, 0, 0, 6, 0, 0, 6
+/home/flyinpancake/CLionProjects/KommandCaland/README.md, Markdown, 0, 0, 6, 0, 0, 6, 12
+/home/flyinpancake/CLionProjects/KommandCaland/chapter.c, C, 0, 98, 0, 0, 6, 30, 134
+/home/flyinpancake/CLionProjects/KommandCaland/chapter.h, C++, 27, 0, 0, 0, 3, 8, 38
+/home/flyinpancake/CLionProjects/KommandCaland/game.c, C, 0, 151, 0, 0, 3, 34, 188
+/home/flyinpancake/CLionProjects/KommandCaland/game.h, C++, 11, 0, 0, 0, 3, 6, 20
+/home/flyinpancake/CLionProjects/KommandCaland/item.c, C, 0, 97, 0, 0, 3, 11, 111
+/home/flyinpancake/CLionProjects/KommandCaland/item.h, C++, 11, 0, 0, 0, 3, 10, 24
+/home/flyinpancake/CLionProjects/KommandCaland/main.c, C, 0, 45, 0, 0, 1, 4, 50
+/home/flyinpancake/CLionProjects/KommandCaland/movement.c, C, 0, 139, 0, 0, 3, 23, 165
+/home/flyinpancake/CLionProjects/KommandCaland/movement.h, C++, 15, 0, 0, 0, 3, 7, 25
+/home/flyinpancake/CLionProjects/KommandCaland/prog_dokument.md, Markdown, 0, 0, 63, 0, 0, 47, 110
+Total, -, 64, 530, 69, 23, 28, 186, 900

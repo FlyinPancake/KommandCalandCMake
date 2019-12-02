@@ -26,9 +26,12 @@ void addItem(item **clist, item toAdd) {
     item *currentListItem = *clist;
     while (currentListItem != NULL)
     {
-        if (currentListItem -> type == toAdd.type) {
+        if (strcmp(currentListItem -> type, toAdd.type) == 0) {
             if (currentListItem -> qual < toAdd.qual) {
                 printf("You dropped %s, and kept %s\n", currentListItem->name, toAdd.name);
+                currentListItem ->qual = toAdd.qual;
+                strcpy(currentListItem -> type, toAdd.type);
+                strcpy(currentListItem -> name, toAdd.name);
                 return;
             } else {
                 printf("%s is not wort your time. %s is better", toAdd.name, currentListItem->name);
@@ -70,4 +73,38 @@ void reverseInv(item **clist)
 
     }
     *clist = elozo;
+}
+
+bool useItem(action act, item *itm) {
+    if(itm == NULL)
+    {
+        printf("You don't have that item\n");
+        return false;
+    }
+    if (strcmp(itm -> type,act.type) != 0)
+    {
+        printf("You'll need something else...\n");
+        return false;
+    }
+    if (itm -> qual < act.diff)
+    {
+        printf("Find some better equipment!\n");
+        return false;
+    }
+    else
+    {
+        printf("Success!\n");
+        return true;
+    }
+
+}
+
+item *findbyType(item *invenory, char *type) {
+    while (invenory != NULL)
+    {
+        if (strcmp(invenory -> type, type) == 0)
+            break;
+        invenory = invenory -> next;
+    }
+    return invenory;
 }

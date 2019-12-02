@@ -30,7 +30,6 @@ char *GetData(FILE *f)
         data = tmp;
 
         data[ii++] = buf;
-        // printf("%c", buf);
     } while (buf != '/');
     data[--ii] = '\0';
 

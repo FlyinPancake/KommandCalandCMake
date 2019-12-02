@@ -86,7 +86,7 @@ PossibleDirection findPD(int **eleje, int y, int x) {
     PossibleDirection rtn = { .n = eleje[y - 1][x],
                               .e = eleje[y][x + 1],
                               .s = eleje[y + 1][x],
-                              .w = eleje[y][x + 1]};
+                              .w = eleje[y][x - 1]};
     return rtn;
 }
 
@@ -139,7 +139,8 @@ int moveTo(PossibleDirection pd, int *y, int *x, char dir) {
 }
 
 
-PossibleDirection blockingDirection(PossibleDirection nonB, char type) {
+PossibleDirection blockingDirection(PossibleDirection nonB, char type)
+{
     switch (type) {
         case 'n':
             nonB.n = 0;
@@ -153,8 +154,10 @@ PossibleDirection blockingDirection(PossibleDirection nonB, char type) {
         case 'w':
             nonB.w = 0;
             break;
-
+        default:
+            break;
     }
+    return nonB;
 }
 
 

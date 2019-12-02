@@ -81,26 +81,26 @@ void play(int savNo)
         return;
     }
 
+
     char path[50] = "rooms/";
     char num[3];
     sprintf(num, "%d.txt", roomLayout[y][x]);
     strcat(path, num);
 
     chapter current = ReadChapt(path);
+    DrawChapter(current);
 
     while (true) {
         char command[10];
         char arg[10];
 
-        DrawChapter(current);
-        nl();
-        ChooseNext(findPD(roomLayout,y,x));
+        PossibleDirection pd = blockingDirection(findPD(roomLayout,y,x),current.action.blocking);
+        ChooseNext(pd);
         nl();
         scanf("%s",command);
 
         if (strcmp(command, "move") == 0) {
             scanf("%s", arg);
-            PossibleDirection pd = findPD(roomLayout, y, x);
 
             int nextroom = moveTo(pd,&y,&x,arg[0]);
 
@@ -112,6 +112,9 @@ void play(int savNo)
                 strcat(path, num);
                 FreeChap(current);
                 current = ReadChapt(path);
+                nl();
+                nl();
+                DrawChapter(current);
             }
         }
         else if (( strcmp(command, "pickup") == 0) || (strcmp(command, "get") == 0) )
@@ -134,30 +137,51 @@ void play(int savNo)
 
         else if ( strcmp(command,"save") == 0)
         {
+            while (!(savNo > 0 && savNo < 4))
+            {
+                printf("Select save slot (1-3): ");
+                scanf("%d", &savNo);
+            }
             saveGame(savNo, x,y,inventory);
             printf("Game Saved!");
         }
 
+        else if (strcmp(command, "use")==0)
+        {
+            scanf("%s", arg);
+            if (useItem(current.action,findbyType(inventory,arg)))
+            {
+                current.action.blocking=' ';
+            }
+        }
+        else if (strcmp(command,"room") == 0)
+        {
+            DrawChapter(current);
+        }
+        else if (strcmp(command, "halp") == 0)
+        {
+            halp();
+        }
+
         else
-            printf("Come again pls...");
-
-
-
+            printf("Come again pls...\nUse halp to get halp");
         nl();
     }
 
     FreeChap(current);
     freeItemsList(inventory);
     freeTable(roomLayout,rows);
-
 }
 
 
-void halp()
-{
-    printf("KommandCaland: Help\n");
-    printf("\tmove <direction> moves in direction if possible (n e s w)\n");
-    printf("\tpickup, get picks up item off the floor, if that makes sense\n");
-    printf("\tsave saves the game");
-    printf("");
+void halp() {
+    FILE *f = fopen("halp.txt", "r");
+    char c = fgetc(f);
+    while(c != EOF)
+    {
+        printf("%c", c);
+        c = fgetc(f);
+    }
+    nl();
+    fclose(f);
 }

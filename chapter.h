@@ -6,6 +6,7 @@
 #define KOMMANDCALAND_CHAPTER_H
 
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef struct action
 {
@@ -31,4 +32,6 @@ typedef struct chapter
 void DrawChapter(const chapter chp);
 chapter ReadChapt(const char *room );
 void FreeChap(chapter c);
+bool hasItem(item *inventory, char type[]);
+
 #endif //KOMMANDCALAND_CHAPTER_H

@@ -14,4 +14,6 @@ typedef struct Save {
 
 void saveGame(int savNo, int x, int y, item *inv);
 void play(int savNo);
+void halp();
+
 #endif //KOMMANDCALAND_GAME_H
