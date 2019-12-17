@@ -1,0 +1,6 @@
+3as szoba
+/The room is empty, you only see a door.
+Its handle is tied down.
+You'll need something sharp and pointy/
+danger /sword[1]s/
+item //

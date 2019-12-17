@@ -1,5 +1,5 @@
-1es szoba/
-Welcome to the Dungeon.
-Use your hands to open the gates /
-/hand[1]s/
+1es szoba
+/Welcome to the Tomb Wehe No One Dies.
+You may enter the taverns/
+/hand[1] /
 //

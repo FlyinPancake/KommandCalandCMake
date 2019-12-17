@@ -1,0 +1,5 @@
+3as szoba
+/You see a sea of vines
+You need a really good sword to cut trough all of this/
+danger /sword[21]s/
+item //

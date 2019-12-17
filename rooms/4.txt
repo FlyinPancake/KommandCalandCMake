@@ -1,0 +1,6 @@
+3as szoba
+/You see a sword lying on the ground...
+Probably you should pick it up
+It moght come in handy real soon.../
+danger /hand[1] /
+item /sword[30,Average Sword]/

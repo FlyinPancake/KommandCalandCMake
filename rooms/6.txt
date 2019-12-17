@@ -1,0 +1,6 @@
+6. szoba - fuck mothering sword
+/You enter the room.
+The only thing to be seen is an anchient sword
+The weapon looks like it wasn't touched for at least a thousand years/
+/hand[0] /
+/sword[60,The FM Sword]/

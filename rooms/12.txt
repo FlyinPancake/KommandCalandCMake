@@ -1,0 +1,6 @@
+12. szoba end
+/You found the treasure!
+This is the end of this demo.
+You can easily create levels based on the manual!/
+/hand[1] /
+//

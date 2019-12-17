@@ -1,5 +1,6 @@
-2es szoba/
-Good... keep going south, so the program doesn't crash
-And... gates are'nt implemented at this stage anyways.../
+2es szoba
+/You see an opening on the wall
+I is an old door!
+You should be able to hold it open long enough to go trough/
 /hand[1]s/
 //
